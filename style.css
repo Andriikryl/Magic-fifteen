@@ -26,13 +26,22 @@
     isolation: isolate;
   }
 
+  body{
+    background-color: #f9c5d1;
+  }
+
   .page{
-    --max-width: 400px;
+    --max-width: 500px;
     --padding: 2rem;
     width: min(var(--max-width), 100% - var(--padding));
     margin-inline: auto;
     text-align: center;
     user-select: none;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+    padding: 40px;
+    border-radius: 10px;
+    margin-block-start: 20px;
   }
 
   h1{
@@ -43,9 +52,10 @@
   .fifteen{
     width: 100%;
     padding-block-end: 100%;
-    background-color: tomato;
+    background-color: #f46e6f;
     margin-block-end: 1.5rem;
     position: relative;
+    
   }
 
   .item{
@@ -55,11 +65,13 @@
     width: 25%;
     height: 25%;
     border: none;
-    background: black;
+    background: #148c8a;
     color: white;
     font-size: 2rem;
     cursor: pointer;
     box-shadow: inset 1px 1px #e5d6f6;
+    /* box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); */
+    transition: transform ease .5s, box-shadow ease .5s;
     transition: transform 0.2s, filter 0.5s;
   }
 
@@ -70,7 +82,7 @@
     width: 84%;
     height: 84%;
     margin: 8%;
-    box-shadow: inset 0 0 0 2px #922ec5;
+    box-shadow: inset 0 0 0 2px #2e3359;
   }
 
   .button{
@@ -80,8 +92,15 @@
     font-size: 20px;
     padding: 14px 30px;
     cursor: pointer;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: transform ease .5s, box-shadow ease .5s;
+  }
+
+  .button:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
   }
 
   .fifteenWon .item{
-    filter: brightness(200%);
+    filter: brightness(150%);
   }
