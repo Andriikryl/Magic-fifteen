@@ -47,6 +47,7 @@
   h1{
     font-size: 3rem;
     margin-block-end: 1em;
+    text-transform: uppercase;
   }
 
   .fifteen{
@@ -87,7 +88,7 @@
 
   .button{
     color: white;
-    background-color: black;
+    background-color: #2e3359;
     border: none;
     font-size: 20px;
     padding: 14px 30px;
