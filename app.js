@@ -43,6 +43,46 @@ containerNode.addEventListener('click', (event) => {
 })
 
 
+window.addEventListener('keydown', (event) => {
+    if(!event.key.includes('Arrow')) {
+        return;
+    }
+
+    const blankCords = findCoordinatesByNumber(blankNumber, matrix);
+    const buttonCoords = {
+        x: blankCords.x,
+        y: blankCords.y,
+    };
+
+    const direction = event.key.split('Arrow')[1].toLowerCase()
+    const maxIndexMatrix = matrix.length
+    switch(direction) {
+        case 'up':
+            buttonCoords.y += 1;
+            break;
+         case 'down':
+             buttonCoords.y -= 1;
+            break;    
+        case 'left':
+            buttonCoords.x += 1;
+            break;
+        case 'right':
+             buttonCoords.x -= 1;
+             break;
+            
+    }
+
+    if(buttonCoords.y >= maxIndexMatrix || buttonCoords.y < 0 || 
+        buttonCoords.x >= maxIndexMatrix || buttonCoords.x < 0) {
+            return;
+        }
+
+        swap(blankCords, buttonCoords, matrix);
+            setPositionItems(matrix)
+
+})
+
+
 
 
 function getMatrix(arr) {
@@ -105,7 +145,36 @@ function swap(coords1, coords2, matrix) {
     const coords1Number = matrix[coords1.y][coords1.x];
     matrix[coords1.y][coords1.x] = matrix[coords2.y][coords2.x]
     matrix[coords2.y][coords2.x] = coords1Number;
+
+    if(isWon(matrix)){
+        addWonClass()
+    }
 }
+
+const winFlatArr = new Array(16).fill(0).map((_item, i) => i + 1);
+function isWon(matrix){
+const flatMatrix = matrix.flat();
+    for(let i = 0; i < winFlatArr.length; i++){
+        if(flatMatrix[i] !== winFlatArr[i]) {
+            return false
+        }
+    }
+
+    return true
+}
+
+
+const wonClass = 'fifteenWon'
+function addWonClass () {
+    setTimeout(() => {
+        containerNode.classList.add(wonClass);
+
+        setTimeout(() => {
+            containerNode.classList.remove(wonClass)
+        },1000);
+    }, 200)
+}
+
 
 
 

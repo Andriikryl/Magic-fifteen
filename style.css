@@ -60,7 +60,7 @@
     font-size: 2rem;
     cursor: pointer;
     box-shadow: inset 1px 1px #e5d6f6;
-    transition: transform 0.2s;
+    transition: transform 0.2s, filter 0.5s;
   }
 
   .item__val{
@@ -80,4 +80,8 @@
     font-size: 20px;
     padding: 14px 30px;
     cursor: pointer;
+  }
+
+  .fifteenWon .item{
+    filter: brightness(200%);
   }
