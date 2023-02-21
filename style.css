@@ -62,5 +62,20 @@
   }
 
   .item__val{
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84%;
+    height: 84%;
+    margin: 8%;
+    box-shadow: inset 0 0 0 2px #922ec5;
+  }
+
+  .button{
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 20px;
+    padding: 14px 30px;
+    cursor: pointer;
   }
