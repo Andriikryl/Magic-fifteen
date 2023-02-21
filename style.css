@@ -27,5 +27,40 @@
   }
 
   .page{
+    --max-width: 400px;
+    --padding: 2rem;
+    width: min(var(--max-width), 100% - var(--padding));
+    margin-inline: auto;
+    text-align: center;
+    user-select: none;
+  }
+
+  h1{
+    font-size: 3rem;
+    margin-block-end: 1em;
+  }
+
+  .fifteen{
+    width: 100%;
+    padding-block-end: 100%;
+    background-color: tomato;
+    margin-block-end: 1.5rem;
+    position: relative;
+  }
+
+  .item{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25%;
+    height: 25%;
+    border: none;
+    background: black;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .item__val{
     
   }
