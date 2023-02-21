@@ -1,10 +1,13 @@
 const containerNode = document.getElementById('fifteen')
 const itemsNodes = Array.from(containerNode.querySelectorAll('.item'));
+
 const countItems = 16;
 
 if(itemsNodes.length !== 16){
     throw new Error(`should be ${countItems} items in html`)
 }
+
+itemsNodes[countItems - 1].style.display = 'none'
 
 let matrix = getMatrix(
     itemsNodes.map((item) => Number(item.dataset.matrixId))
@@ -14,7 +17,20 @@ setPositionItems(matrix)
 
 
 
+document.getElementById('shuff').addEventListener('click', () => {
+    const shuffledArray = shuffleArray(matrix.flat())
+    matrix = getMatrix(shuffledArray)
+    setPositionItems(matrix);
+})
 
+
+
+containerNode.addEventListener('click', (event) => {
+    const buttonNode = event.target.closest('button');
+    if(!buttonNode){
+        return
+    }
+})
 
 
 
@@ -49,6 +65,20 @@ function setNodeStyle(node, x, y) {
     const shiftPs = 100
     node.style.transform = `translate3D(${x * shiftPs}%, ${y * shiftPs}%, 0)`
 }
+
+function shuffleArray(arr) {
+    return arr
+        .map(value => ({value, sort: Math.random()}))
+        .sort((a, b) => a.sort - b.sort)
+        .map(({value}) => value)
+}
+
+
+
+
+
+
+
 
 
 
