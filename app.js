@@ -24,11 +24,20 @@ document.getElementById('shuff').addEventListener('click', () => {
 })
 
 
-
+const blankNumber = 16;
 containerNode.addEventListener('click', (event) => {
     const buttonNode = event.target.closest('button');
     if(!buttonNode){
         return
+    }
+
+    const buttonNumber = Number(buttonNode.dataset.matrixId);
+    const buttonCords = findCoordinatesByNumber(buttonNumber, matrix);
+    const blankCords = findCoordinatesByNumber(blankNumber, matrix);
+    const isValid = isValidForSwap(buttonCords, blankCords);
+
+    if(isValid){
+        
     }
 })
 
@@ -71,6 +80,24 @@ function shuffleArray(arr) {
         .map(value => ({value, sort: Math.random()}))
         .sort((a, b) => a.sort - b.sort)
         .map(({value}) => value)
+}
+
+function findCoordinatesByNumber(number, matrix){
+    for(let y = 0; y < matrix.length; y++) {
+        for(let x = 0; x < matrix[y].length; x++){
+            if(matrix[y][x] === number){
+                return {x, y}
+            }
+        }
+    }
+    return null
+}
+
+function isValidForSwap(coords1, coords2){
+    const diffX = Math.abs(coords1.x - coords2.x)
+    const diffY = Math.abs(coords1.y - coords2.y)
+
+    return (diffX === 1 || diffY === 1) && (coords1.x === coords2.x || coords1.y === coords1.y)
 }
 
 
